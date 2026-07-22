@@ -7,7 +7,7 @@ kind: Pod
 spec:
   containers:
   - name: playwright
-    image: mcr.microsoft.com/playwright:v1.47.0-jammy
+    image: mcr.microsoft.com/playwright:v1.61.1-jammy
     command:
     - cat
     tty: true
