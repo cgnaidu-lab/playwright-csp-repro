@@ -1,10 +1,11 @@
 pipeline {
-    agent any
+    agent {
+        docker { image 'mcr.microsoft.com/playwright:v1.47.0-jammy' }
+    }
     stages {
         stage('Install') {
             steps {
                 sh 'npm install'
-                sh 'npx playwright install --with-deps'
             }
         }
         stage('Test') {
