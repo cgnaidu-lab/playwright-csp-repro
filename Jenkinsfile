@@ -1,6 +1,19 @@
 pipeline {
     agent {
-        docker { image 'mcr.microsoft.com/playwright:v1.47.0-jammy' }
+        kubernetes {
+            yaml '''
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: playwright
+    image: mcr.microsoft.com/playwright:v1.47.0-jammy
+    command:
+    - cat
+    tty: true
+'''
+            defaultContainer 'playwright'
+        }
     }
     stages {
         stage('Install') {
